@@ -41,7 +41,7 @@ while True:
                 bot.sendMessage(chat_id, "Tomando video!!!!!!!")
                 video()
             elif u'\U0001F4C2' in command:                
-                bot.sendMessage(chat_id, "http://34.125.125.114/gallery.php")
+                bot.sendMessage(chat_id, "http://ip-servidor/gallery.php")
             elif u'\U0001f4f7' in command:         
                 bot.sendMessage(chat_id, "Tomando foto!!!!!!!") 
                 camara()               
@@ -101,12 +101,12 @@ while True:
             if codificado_correctamente:	
                 #Nota: .decode sirve para quitar b' al inicio de la cadena
                 imagen_en_base64 = base64.b64encode(buffer).decode('utf-8')
-                url1 = 'http://34.125.125.114/uploads/foto.php' # Si cambias el servidor o ruta del archivo, cambia la url aquí
+                url1 = 'http://ip-servidor/uploads/foto.php' # Si cambias el servidor o ruta del archivo, cambia la url aquí
                 datos_enviar = {'foto': imagen_en_base64}
                 print("Enviando foto...")
                 peticion = Request(url1, urlencode(datos_enviar).encode())     
                 respuesta = urlopen(peticion).read().decode()   
-                bot.sendPhoto(1709607424, photo=open(str(output), 'rb'))    
+                bot.sendPhoto(1885607458, photo=open(str(output), 'rb'))    
                 print("Guardada con éxito")
         else:
             print("Error al acceder a la cámara")
@@ -136,7 +136,7 @@ while True:
         output = d1.replace(":","")
         output = output.replace(" ","_")
         output = output[0:17]+".jpg"   
-        cap = cv2.VideoCapture(1)
+        cap = cv2.VideoCapture(0)
         leido, frame = cap.read()
         if leido == True:
             cv2.imwrite(str(output), frame)
@@ -151,12 +151,12 @@ while True:
             if codificado_correctamente:	
                 #Nota: .decode sirve para quitar b' al inicio de la cadena
                 imagen_en_base64 = base64.b64encode(buffer).decode('utf-8')
-                url1 = 'http://34.125.125.114/uploads/foto.php' # Si cambias el servidor o ruta del archivo, cambia la url aquí
+                url1 = 'http://ip-servidor/uploads/foto.php' # Si cambias el servidor o ruta del archivo, cambia la url aquí
                 datos_enviar = {'foto': imagen_en_base64}
                 print("Enviando foto...")
                 peticion = Request(url1, urlencode(datos_enviar).encode())     
                 respuesta = urlopen(peticion).read().decode()   
-                bot.sendPhoto(1709607424, photo=open(str(output), 'rb'))    
+                bot.sendPhoto(1885607458, photo=open(str(output), 'rb'))    
                 print("Guardada con éxito")
         else:
             print("Error al acceder a la cámara")
@@ -164,7 +164,7 @@ while True:
             Finalmente liberamos o soltamos la cámara
             """
         cap.release()       
-    bot = telepot.Bot('1909985851:AAGz-B7Zq_RkcSstrYzF2ubRdEJ4HV1j8UE')
+    bot = telepot.Bot('TOKEN')
     bot.message_loop(handle)    
     #line = ser.readline()
     #bot.sendMessage(1709607424, "Alarma Activada!!!!!!!")
